@@ -1,13 +1,13 @@
 {
-  "name": "kbin-client",
+  "name": "caiman",
   "version": "1.0.0",
-  "description": "kbin app at home",
+  "description": "kbin mobile interface",
   "scripts": {
     "test": "echo \"lmao you thought\" && exit 1",
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html"
   },
-  "author": "horseradish",
+  "author": "czentkiralyi",
   "license": "MIT",
   "dependencies": {
     "mithril": "^2.2.2",
