@@ -1,14 +1,13 @@
-kbin-client
-===========
+Caiman
+======
 
-It's a mobile app for [kbin.social](https://kbin.social) at home.
+Caiman is a [kbin.social](https://kbin.social) mobile interface.
 
-Keep your expectations low
+Keep your expectations low. It's just a single web page.
 
 ## Dev info
 
-Requirements AKA what I used:
-
-- Node 10 & whatever NPM/Yarn/etc you like
-- Parcel for building, dev server, release tooling; I'm lazy
-- Mithril for a client-side framework, we get budget React plus routing plus easy XHRs all in like 10kb
+- Developed on Node v10 with NPM, but either or both may be flexible, I don't know
+- Tech stack
+  - Parcel for build tooling, it handles development servers and minification and transpiling via Babel
+  - Mithil is our React-lite, router, and XHR library
