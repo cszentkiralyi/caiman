@@ -47,6 +47,8 @@
 ## Roadmap
 
 - [ ] Set up project & dependencies
+  - [x] Mithril, Parcel
+  - [ ] JSX+Mithril
 - [ ] Get app skeleton up and running: index page, basic components rendering, spin up a worker
 - [ ] Framework implementation
   - [ ] Content components

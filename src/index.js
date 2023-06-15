@@ -1,6 +1,16 @@
 import m from 'mithril';
 
-const $ = (sel, node) => (node || document).querySelectorAll(sel);
-const $$ = (sel, node) => (node || document).querySelector(sel);
+//import { App } from 'components';
 
-m.render($$('body'), "Hello, world!");
+const $$ = (sel, node) => (node || document).querySelectorAll(sel);
+const $ = (sel, node) => (node || document).querySelector(sel);
+
+function Hello() {
+    return {
+        view: () => (
+            <div>Hello, world!</div>
+        )
+    };
+}
+
+m.render($('body'), <Hello />);
