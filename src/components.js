@@ -16,9 +16,11 @@ class App {
 class HeaderBar {
   view(vnode) {
     return (
-      <div class="w-full flex p-2">
+      <div class="w-full flex">
         <div class="flex-grow" />
-        <strong>Caiman</strong>
+        <div class="p-2">
+          <strong>Caiman</strong>
+        </div>
         <div class="flex-grow" />
       </div>
     );
@@ -28,7 +30,19 @@ class HeaderBar {
 class ContentList {
   view(vnode) {
     return (
-      <div class="h-full bg-0">Hello!</div>
+      <div class="h-full overflow-auto bg-0">
+        <ContentCard />
+      </div>
+    );
+  }
+}
+
+class ContentCard {
+  view(vnode) {
+    return (
+      <div class="p-4 mx-4 my-2 bg-1 rounded shadow">
+        Card text!
+      </div>
     );
   }
 }
