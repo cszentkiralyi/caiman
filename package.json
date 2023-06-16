@@ -4,16 +4,15 @@
   "description": "kbin mobile interface",
   "scripts": {
     "test": "echo \"lmao you thought\" && exit 1",
+    "dev-no-hmr": "parcel src/index.html --no-hmr",
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html"
   },
   "author": "czentkiralyi",
   "license": "MIT",
-  "dependencies": {
-    "mithril": "^2.2.2",
-    "parcel": "^2.9.2"
-  },
   "devDependencies": {
+    "mithril": "^2.2.2",
+    "parcel": "^2.9.2",
     "@babel/core": "^7.22.5",
     "@babel/plugin-transform-react-jsx": "^7.22.5",
     "parcel-bundler": "^1.12.5"

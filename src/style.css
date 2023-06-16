@@ -1,0 +1,36 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* Util */
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.p-0 { padding: 0; }
+.p-px { padding: 1px; }
+.p-2 { padding: 0.25rem; }
+.p-4 { padding: 0.5rem; }
+.p-8 { padding: 1rem; }
+
+/* Flex */
+.flex {
+  display: flex;
+}
+.flex-grow {
+  flex-grow: 1;
+}
+.flex-shrink {
+  flex-shrink: 1;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-row {
+  flex-direction: row;
+}
+
+/* Colors/themes */
+.bg-0 {
+  background-color: #888;
+}
