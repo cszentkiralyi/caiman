@@ -78,7 +78,7 @@ class Toast {
           ? toast.error.message
           : "Unknown error";
         toastContent = (
-            <pre class="text-sm overflow-auto">{toast.error.stack}</pre>
+            <pre class="text-xs overflow-auto">{toast.error.stack}</pre>
         );
       } else if ('msg' in toast) {
         toastContent = (<div>{toast.msg}</div>);

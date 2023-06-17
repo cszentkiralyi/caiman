@@ -1,3 +1,5 @@
+<img src="./src/assets/icon.svg" style="height:10rem; width:10rem">
+
 Caiman
 ======
 

@@ -102,6 +102,8 @@ body {
 .font-weight-light { font-weight: 200; }
 .font-weight-initial { font-weight: initial; }
 
+.text-2xs { font-size: 40%; }
+.text-xs { font-size: 60%; }
 .text-sm { font-size: 80%; }
 .text-md { font-size: 100%; }
 .text-lg { font-size: 120%; }
