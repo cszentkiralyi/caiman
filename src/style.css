@@ -1,15 +1,35 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   padding: 0;
   margin: 0;
+  width: 100%;
+  height: 100%;
   font-family: sans-serif;
   font-size: 14pt;
-  --border-color: transparent;
+  /*overflow: hidden;*/
+
+  --border-color: transparent; /* God bless modern CSS */
 }
 
 
 /* Sizing, padding, margin */
 .w-full { width: 100%; }
+.w-1_4 { width: 25%; }
+.w-1_3 { width: 33%; }
+.w-1_2 { width: 50%; }
+.w-2_3 { width: 66%; }
+.w-3_4 { width: 75%; }
+
 .h-full { height: 100%; }
+.h-1_4 { height: 25%; }
+.h-1_3 { height: 33%; }
+.h-1_2 { height: 50%; }
+.h-2_3 { height: 66%; }
+.h-3_4 { height: 75%; }
 
 .p-0 { padding: 0; }
 .p-px { padding: 1px; }
@@ -21,6 +41,21 @@ body {
 .py-2 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
 .py-4 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
 .py-8 { padding-top: 1rem; padding-bottom: 1rem; }
+.px-0 { padding-left: 0; padding-right: 0; }
+.px-px { padding-left: 1px; padding-right: 1px; }
+.px-2 { padding-left: 0.25rem; padding-right: 0.25rem; }
+.px-4 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-8 { padding-left: 1rem; padding-right: 1rem; }
+.pr-0 { padding-right: 0; }
+.pr-px { padding-right: 1px; }
+.pr-2 { padding-right: 0.25rem; }
+.pr-4 { padding-right: 0.5rem; }
+.pr-8 { padding-right: 1rem; }
+.pl-0 { padding-left: 0; }
+.pl-px { padding-left: 1px; }
+.pl-2 { padding-left: 0.25rem; }
+.pl-4 { padding-left: 0.5rem; }
+.pl-8 { padding-left: 1rem; }
 
 .m-0 { margin: 0; }
 .m-px { margin: 1px; }
@@ -47,12 +82,25 @@ body {
 /* Borders */
 .border { border: 1px solid var(--border-color); }
 .border-b { border-bottom: 1px solid var(--border-color); }
-.border-color-0 { --border-color: black; }
+.border-l { border-left: 1px solid var(--border-color); }
+.border-r { border-right: 1px solid var(--border-color); }
+
+
+/* Position */
+.absolute { position: absolute; }
+.relative { position: relative; }
+.top-0 { top: 0; }
+.left-0 { left: 0; }
+.bottom-0 { bottom: 0; }
+.right-0 { right: 0; }
+.inset-y-0 { bottom: 0; top: 0;  }
+.inset-x-0 { right: 0; left: 0; }
 
 
 /* Util */
-.text-bold { font-weight: bold; }
-.text-normal { font-weight: initial; }
+.font-weight-bold { font-weight: 600; }
+.font-weight-light { font-weight: 200; }
+.font-weight-initial { font-weight: initial; }
 
 .text-sm { font-size: 80%; }
 .text-md { font-size: 100%; }
@@ -66,16 +114,27 @@ body {
 .rounded { border-radius: 0.25rem; }
 .rounded-0 { border-radius: 0; }
 
-.shadow { box-shadow: 0px 0px 25px rgba(0,0,0,0.3); }
+.shadow { box-shadow: 0px 0.1rem 0.25rem rgba(0,0,0,0.1); }
+
+.opacity-0 { opacity: 0; }
+.opacity-20 { opacity: 0.2; }
+.opacity-40 { opacity: 0.4; }
+.opacity-60 { opacity: 0.6; }
+.opacity-80 { opacity: 0.8; }
+.opacity-100 { opacity: 1.0; }
 
 .block { display: block; }
 .inline { display: inline; }
 .inline-block { display: inline-block; }
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+
 
 /* Flex */
-.flex { display: flex; }
 .flex-grow { flex-grow: 1; }
+.flex-grow-0 { flex-grow: 0; }
 .flex-shrink { flex-shrink: 1; }
+.flex-shrink-0 { flex-shrink: 0; }
 .flex-col { flex-direction: column; }
 .flex-row { flex-direction: row; }
 
@@ -85,8 +144,15 @@ body {
  * The closer to 0 a number is, the further "back" it represents from a visual perspective.
  * The same class applies the same kind of color, regardless of active theme. */
 .bg-0 {
-  background-color: #aaa;
+  background-color: #eee;
 }
 .bg-1 {
   background-color: #fff;
+}
+
+.border-color-0 {
+  border-color: #777;
+}
+.border-color-1 {
+  border-color: #555;
 }

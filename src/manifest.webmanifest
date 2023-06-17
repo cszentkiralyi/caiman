@@ -1,0 +1,8 @@
+{
+  "name": "Caiman",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#FFFFFF",
+  "orientation": "portrait"
+}
