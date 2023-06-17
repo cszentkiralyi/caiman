@@ -2,6 +2,7 @@
   "name": "caiman",
   "version": "1.0.0",
   "description": "kbin mobile interface",
+  "source": "src/index.html",
   "scripts": {
     "dev": "parcel src/index.html",
     "dev-no-hmr": "parcel src/index.html --no-hmr",
