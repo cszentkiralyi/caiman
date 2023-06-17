@@ -42,3 +42,7 @@ My terminology is not exact, I'm not intimately familiar with how every fedivers
 - **Why Mithril?** I know it since it's practically React, but it does more of what this app needs with less bytes of library. It basically boils down to the fact that I am lazy.
 - **Why Parcel?** Same answer, except Parcel is akin to Webpack without any of the parts that make me want to scream.
 - **Can I steal this?** Sure, the MIT license is one step away from "do whatever you want." I'd appreciate a shout-out but there's no money being made here, so feel free to fork and tinker and borrow and sell and solve world hunger with this code.
+
+# Credits
+
+- Icon courtesy of FreeSVG.org, SVG #188514, listed in the public domain as of 17 JUNE 2023
