@@ -16,7 +16,7 @@ class App {
     Api.Get('posts')
       .then(
         (resp) => console.log(resp),
-        (err) => Actions.addToast(state, {message: err ? err.toString() : ""})
+        (err) => Actions.addToast(state, { error : err  })
       );
   }
 
@@ -73,12 +73,28 @@ class Toast {
   view({ attrs }) {
     let state = attrs.state;
     if (state.toasts && state.toasts.length > 0) {
+      let toast = state.toasts[0];
+      let toastIcon = null, toastTitle = null, toastContent = null;
+
+      if ('error' in toast) {
+        toastTitle = (toast.error.message && toast.error.message !== 'null')
+          ? toast.error.message
+          : "Unknown error";
+        toastContent = (
+            <pre class="text-sm overflow-auto">{toast.error.stack}</pre>
+        );
+      } else if ('msg' in toast) {
+        toastContent = (<div>{toast.msg}</div>);
+      }
+
+      // TODO: support toastIcon
       return (
         <div class="absolute inset-x-0 inset-y-0">
           <div
-            class="absolute bottom-0 inset-x-0 rounded bg-1 border border-color-1 shadow mb-4 mx-8 p-4"
+            class="absolute bottom-0 inset-x-0 rounded bg-1 border border-color-1 shadow mb-4 mx-8 p-4 text-sm"
             onclick={(e) => this.close(e, state)}>
-            {state.toasts[0].messsage || "Error"}
+              {toastTitle ? (<div class="font-weight-bold">{toastTitle}</div>) : null}
+              {toastContent ? (<div>{toastContent}</div>) : null}
           </div>
         </div>
       );
