@@ -19,6 +19,7 @@
     "@parcel/babel-preset-env": "^2.9.2",
     "@parcel/packager-raw-url": "^2.9.2",
     "@parcel/transformer-webmanifest": "^2.9.2",
+    "hammerjs": "^2.0.8",
     "mithril": "^2.2.2",
     "parcel": "^2.9.2",
     "serve": "^14.2.0"

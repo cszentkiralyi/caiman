@@ -1,4 +1,5 @@
 import m from 'mithril';
+import Hammer from 'hammerjs';
 
 import Api from './lib/api.js';
 import Mock from './lib/mock.js';
@@ -66,7 +67,30 @@ class ContentCard {
   }
 }
 
+class Overlay {
+  view({ attrs, children }) {
+    let overlayClass = 'absolute inset-x-0 inset-y-0 pointer-events-none';
+    return (
+      <div class={overlayClass}>
+        {children}
+      </div>
+    );
+  }
+}
+
 class Toast {
+  onupdate({ attrs, dom }) {
+    if (dom && !this.hammertime) {
+      this.hammertime = new Hammer(dom, {});
+      this.hammertime.on('swipe', (e) =>  {
+        this.close(attrs.state);
+        m.redraw(); // Must be done manually since Mithril doesn't know about Hammer
+      });
+    } else {
+      this.hammertime = null;
+    }
+  }
+
   view({ attrs }) {
     let state = attrs.state;
     if (state.toasts && state.toasts.length > 0) {
@@ -86,24 +110,23 @@ class Toast {
 
       // TODO: support toastIcon
       return (
-        <div class="absolute inset-x-0 inset-y-0 pointer-events-none">
+        <Overlay>
           <div
-            class="absolute bottom-0 inset-x-0 rounded bg-1 border border-color-1 shadow mb-4 mx-8 p-4 text-sm pointer-events-auto"
-            onclick={(e) => this.close(e, state)}>
+            class="absolute inset-x-0 rounded bg-1 border border-color-1 shadow mx-8 p-4 text-sm pointer-events-auto"
+            style={{ bottom: "5rem " }}
+            >
               {toastTitle ? (<div class="font-weight-bold">{toastTitle}</div>) : null}
               {toastContent ? (<div>{toastContent}</div>) : null}
           </div>
-        </div>
+        </Overlay>
       );
     } else {
       return null;
     }
   }
 
-  close(mouseEvent, state) {
-    mouseEvent.preventDefault();
+  close(state) {
     Actions.dropToast(state);
-    return false;
   }
 }
 
