@@ -1,4 +1,6 @@
-<img src="./src/assets/icon.svg" style="height:10rem; width:10rem">
+<div style="text-align: center;">
+  <img src="./src/assets/icon.svg" style="height:10rem; width:10rem">
+</div>
 
 Caiman
 ======
