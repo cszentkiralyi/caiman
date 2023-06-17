@@ -5,10 +5,6 @@ import Mock from './lib/mock.js';
 import { State, Actions } from './lib/state.js';
 
 
-let _dev_errorPromise = () => {
-  return new Promise((resolve, reject) => reject(null));
-};
-
 class App {
   constructor() {
     let state = this.state = State();
@@ -36,11 +32,12 @@ class App {
 
 class HeaderBar {
   view(vnode) {
+    let logoSrc = new URL('assets/icon.svg', import.meta.url);
     return (
       <div class="w-full flex border-b border-color-1 bg-1">
         <div class="flex-grow" />
-        <div class="py-4">
-          <strong>Caiman</strong>
+        <div class="flex items-center py-2">
+          <img src={logoSrc} alt="Caiman logo" style={{ height: '2rem', width: '2rem' }} />
         </div>
         <div class="flex-grow" />
       </div>
@@ -89,9 +86,9 @@ class Toast {
 
       // TODO: support toastIcon
       return (
-        <div class="absolute inset-x-0 inset-y-0">
+        <div class="absolute inset-x-0 inset-y-0 pointer-events-none">
           <div
-            class="absolute bottom-0 inset-x-0 rounded bg-1 border border-color-1 shadow mb-4 mx-8 p-4 text-sm"
+            class="absolute bottom-0 inset-x-0 rounded bg-1 border border-color-1 shadow mb-4 mx-8 p-4 text-sm pointer-events-auto"
             onclick={(e) => this.close(e, state)}>
               {toastTitle ? (<div class="font-weight-bold">{toastTitle}</div>) : null}
               {toastContent ? (<div>{toastContent}</div>) : null}
