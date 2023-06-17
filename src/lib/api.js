@@ -1,6 +1,6 @@
 import m from 'mithril'
 
-export default {
+module.exports = {
   Get: (path) => {
     return m.request({
       method: 'GET',
