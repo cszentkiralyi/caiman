@@ -13,6 +13,7 @@ body {
   /*overflow: hidden;*/
 
   --border-color: transparent; /* God bless modern CSS */
+  --background-opacity: 1;
 }
 
 
@@ -56,6 +57,7 @@ body {
 .pl-2 { padding-left: 0.25rem; }
 .pl-4 { padding-left: 0.5rem; }
 .pl-8 { padding-left: 1rem; }
+.pl-12 { padding-left: 1.5rem; }
 
 .m-0 { margin: 0; }
 .m-px { margin: 1px; }
@@ -81,6 +83,7 @@ body {
 
 /* Borders */
 .border { border: 1px solid var(--border-color); }
+.border-none { border: none; }
 .border-b { border-bottom: 1px solid var(--border-color); }
 .border-l { border-left: 1px solid var(--border-color); }
 .border-r { border-right: 1px solid var(--border-color); }
@@ -157,6 +160,16 @@ body {
 .bg-1 {
   background-color: #fff;
 }
+
+.bg-black {
+  background-color: rgba(0, 0, 0, var(--background-opacity));
+}
+.bg-opacity-0 { --background-opacity: 0; }
+.bg-opacity-20 { --background-opacity: 0.20; }
+.bg-opacity-40 { --background-opacity: 0.40; }
+.bg-opacity-60 { --background-opacity: 0.60; }
+.bg-opacity-80 { --background-opacity: 0.80; }
+.bg-opacity-100 { --background-opacity: 1; }
 
 .border-color-0 {
   border-color: #777;

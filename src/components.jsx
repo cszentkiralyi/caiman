@@ -10,7 +10,7 @@ class App {
   constructor() {
     let state = this.state = State();
 
-    Api.Get('posts')
+    Mock.Api.Get('posts')
       .then(
         (resp) => console.log(resp),
         (err) => Actions.addToast(state, { error : err  })
@@ -22,6 +22,11 @@ class App {
     return (
       <div class="h-full w-full flex flex-col bg-0">
         <Toast state={state} />
+        {state.sidebar 
+         ? <Sidebar side='right' state={state}>
+            <div>Hello! This is a sidebar</div>
+           </Sidebar>
+         : null}
         <HeaderBar state={state} />
         <div class="flex-grow">
           <ContentList state={state} />
@@ -32,17 +37,27 @@ class App {
 }
 
 class HeaderBar {
-  view(vnode) {
+  view({ attrs }) {
     let logoSrc = new URL('assets/icon.svg', import.meta.url);
     return (
       <div class="w-full flex border-b border-color-1 bg-1">
-        <div class="flex-grow" />
-        <div class="flex items-center py-2">
-          <img src={logoSrc} alt="Caiman logo" style={{ height: '2rem', width: '2rem' }} />
+        <div class="flex-grow flex-shrink-0" />
+        <div class="flex items-center py-2 pl-12">
+          <img src={logoSrc} alt="Caiman logo" style={{ height: '3rem', width: '3rem' }} />
         </div>
-        <div class="flex-grow" />
+        <div class="flex-grow flex-shrink" />
+        <button
+          class="border-none bg-1 font-weight-bold px-4 text-xl"
+          onclick={(e) => this.showSidebar(e, attrs.state)}>
+          M
+        </button>
       </div>
     );
+  }
+
+  showSidebar(evt, state) {
+    evt.preventDefault();
+    Actions.showSidebar(state);
   }
 }
 
@@ -70,10 +85,54 @@ class ContentCard {
 class Overlay {
   view({ attrs, children }) {
     let overlayClass = 'absolute inset-x-0 inset-y-0 pointer-events-none';
+    if (attrs.dark) {
+      overlayClass += ' bg-black bg-opacity-60'
+    }
     return (
       <div class={overlayClass}>
         {children}
       </div>
+    );
+  }
+}
+
+class Sidebar {
+  oncreate({ attrs, dom }) {
+    if (dom && !this.hammertime) {
+      let swipeDir = null;
+      switch (attrs.side) {
+        case 'left': swipeDir = Hammer.DIRECTION_LEFT; break;
+        case 'right': swipeDir = Hammer.DIRECTION_RIGHT; break;
+      }
+      this.hammertime = new Hammer(dom, {});
+      this.hammertime.get('swipe').set({ direction: swipeDir })
+      this.hammertime.on('swipe', (e) =>  {
+        Actions.hideSidebar(attrs.state);
+        m.redraw();
+      });
+    } else {
+      this.hammertime = null;
+    }
+  }
+
+  view({ attrs, children }) {
+    let sidebarClass = 'absolute inset-y-0 bg-1 border-l border-1 shadow pointer-events-auto';
+    switch (attrs.side) {
+      case 'left':
+        sidebarClass += ' left-0';
+        break;
+      case 'right':
+        sidebarClass += ' right-0';
+        break;
+      default:
+        throw `Unknown Sidebar side "${attrs.side}"`;
+    }
+    return (
+      <Overlay dark={true}>
+        <div class={sidebarClass} style={{ minWidth: "60%" }}>
+          {children}
+        </div>
+      </Overlay>
     );
   }
 }
